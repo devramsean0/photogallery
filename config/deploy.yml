@@ -2,12 +2,13 @@
 service: photogallery
 
 # Name of the container image.
-image: your-user/photogallery
+image: ghcr.io/devramsean0/photogallery
 
 # Deploy to these servers.
 servers:
   web:
-    - 192.168.0.1
+    - 141.147.87.119
+
   # job:
   #   hosts:
   #     - 192.168.0.1

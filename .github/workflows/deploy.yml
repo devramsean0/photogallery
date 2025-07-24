@@ -1,0 +1,36 @@
+name: Build and Push Rails App with Kamal
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build_and_push:
+    name: Build and Push Docker Image
+    runs-on: ubuntu-latest
+
+    env:
+      REGISTRY: ghcr.io
+      IMAGE_NAME: ${{ github.repository }}
+      TAG: latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.4 #
+
+      - name: Install Kamal
+        run: gem install kamal
+
+      - name: Log in to GHCR
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ${{ env.REGISTRY }} -u ${{ github.actor }} --password-stdin
+
+      - name: Build and Push Docker image with Kamal
+        run: |
+          kamal build
+          kamal push
