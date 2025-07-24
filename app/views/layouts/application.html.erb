@@ -23,7 +23,16 @@
   </head>
 
   <body>
-    <main class="container mx-auto mt-28 px-5 flex">
+    <main class="w-screen">
+      <% if authenticated? %>
+        <nav class="border-4 border-dashed border-orange-600 bg-gray-800 p-4">
+          <ul class="flex space-x-4">
+            <li><%= link_to "Home", root_path, class: "text-white" %></li>
+            <li><%= link_to "Photos", photos_path, class: "text-white" %></li>
+            <li><%= button_to "Logout", session_path, method: :delete, class: "text-white" %></li>
+          </ul>
+        </nav>
+      <% end %>
       <%= yield %>
     </main>
   </body>
