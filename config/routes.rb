@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
+  get "subscribers/create"
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
+
   resources :photos
   resource :session
   resources :passwords, param: :token
+  resources :subscribers, only: [:create]
+
+  get "subscribers/confirm/:auth_code", to: "subscribers#confirm", as: :confirm_email
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

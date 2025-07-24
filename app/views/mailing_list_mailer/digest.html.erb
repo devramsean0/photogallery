@@ -1,0 +1,20 @@
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0px;
+  }
+</style>
+
+<h1>Hi</h1>
+<p>
+  You subscribed to my gallery digest, Here are some photos I've uploaded in the last day!
+  <br />
+  Thse probably embed horribly in your email client, but they will also show up on <a href="https://gallery.sean.cyou">the website</a>.
+</p>
+
+<div class="grid">
+  <% @photos.each do |photo| %>
+    <%= image_tag photo.photo, width: "600px", height: "300px"%>
+  <% end %>
+</div>

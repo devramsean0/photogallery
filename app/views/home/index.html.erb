@@ -1,3 +1,13 @@
+<% if notice.present? %>
+  <p class="py-2 w-full bg-green-50 text-green-500 font-medium rounded-md inline-block" id="notice"><%= notice %></p>
+<% end %>
+
+<% if alert.present? %>
+  <p class="py-2 w-full bg-amber-50 text-green-500 font-medium rounded-md inline-block" id="notice"><%= notice %></p>
+<% end %>
+
+<%= render "subscribers/form" %>
+
 <section class="grid grid-cols-3 w-full">
   <% @photos.each do |photo | %>
     <%= image_tag photo.photo %>

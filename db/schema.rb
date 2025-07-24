@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_07_24_182103) do
+ActiveRecord::Schema[8.0].define(version: 2025_07_24_215617) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -40,7 +40,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_24_182103) do
   end
 
   create_table "photos", force: :cascade do |t|
-    t.string "in_digest"
+    t.boolean "in_digest", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -52,6 +52,15 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_24_182103) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_sessions_on_user_id"
+  end
+
+  create_table "subscribers", force: :cascade do |t|
+    t.string "email_address"
+    t.boolean "confirmed"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "auth_code"
+    t.index ["auth_code"], name: "index_subscribers_on_auth_code"
   end
 
   create_table "users", force: :cascade do |t|
