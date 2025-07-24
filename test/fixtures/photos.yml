@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  camera: MyString
+  digitized_date: MyString
+  shot_date: MyString
+  location: MyString
+  in_digest: MyString
+
+two:
+  camera: MyString
+  digitized_date: MyString
+  shot_date: MyString
+  location: MyString
+  in_digest: MyString

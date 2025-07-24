@@ -1,0 +1,15 @@
+<div id="<%= dom_id photo %>" class="w-full sm:w-auto my-5 space-y-5">
+  <div>
+    <strong class="block font-medium mb-1">Photo:</strong>
+    <%= link_to photo.photo.filename, photo.photo, class: "text-gray-700 underline hover:no-underline" if photo.photo.attached? %>
+
+    <% if photo.photo.attached? %>
+      <%= image_tag photo.photo, width: "300px", height: "250px" %>
+    <% end %>
+  </div>
+
+  <div>
+    <strong class="block font-medium mb-1">In digest:</strong>
+    <%= photo.in_digest %>
+  </div>
+</div>
